@@ -2,7 +2,7 @@
 This demonstrates best practices for creating a GitHub repository using the sample project "Rockbuster".
 
 ## Objective
-Rockbuster Stealth LLC is a movie rental company that used to have stores worldwide. Facing stiff competition from streaming services such as Netflix and Amazon Prime, the company management plans to use existing movie licenses to launch an online video rental service to stay competitive. 
+Rockbuster Stealth LLC is a fictonal movie rental company that used to have stores worldwide. Facing stiff competition from streaming services such as Netflix and Amazon Prime, the company management plans to use existing movie licenses to launch an online video rental service to stay competitive. 
 
 ## Data
 The data set contains, among others, information on the following parameters:
