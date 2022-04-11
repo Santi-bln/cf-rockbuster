@@ -16,7 +16,10 @@ The uploaded queries relate to business questions such as
 -	Do sales figures vary between geographic regions?
 -	Which countries are Rockbuster customers based in?
 
-You can download the original data set here: http://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip
+You can download the original data set [here](http://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip) .
+
+## Visualizations
+You can find project visualizations on [Tableau](https://public.tableau.com/app/profile/santina.wey/viz/Rockbuster-Visualizations/Map_Revenue).
 
 ## Resources
 Relevant resources will be posted here.
