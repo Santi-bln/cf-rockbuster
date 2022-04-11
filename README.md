@@ -3,3 +3,5 @@ This repository contains queries and scripts on a project named “Rockbuster St
 -	Which movies contributed the most/least to revenue gain?
 -	Do sales figures vary between geographic regions?
 -	Which countries are Rockbuster customers based in?
+
+You can download the orignal data set here: http://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip
