@@ -1,4 +1,4 @@
- 
+
    -- Check all the film categories
    
    SELECT * 
@@ -88,3 +88,52 @@
    	MAX(rental_rate)
    FROM film
    GROUP BY rating;
+   
+   --Film title that contains the word Uptown in any position
+   SELECT film_id,
+   title,
+   description
+   FROM film
+   WHERE title LIKE '%Uptown%';
+   
+   --Film length is more than 120 minutes and rental rate is more than 2.99
+   SELECT film_id,
+   title, 
+   description
+   FROM film
+   WHERE length > 120 AND rental_rate > 2.99;
+   
+   --rental duration is between 3 and 7 days
+   SELECT film_id,
+   title,
+   description
+   FROM film 
+   WHERE rental_duration > 3 AND rental_duration < 7 
+   ORDER BY rental_duration ASC;
+   
+   --film replacement cost is less than 14.99
+   SELECT film_id,
+   title,
+   description
+   FROM film
+   WHERE replacement_cost < 14.99;
+   
+   --film rating is either PG or G
+   SELECT film_id,
+   title, 
+   description
+   FROM film
+   WHERE rating IN ('PG', 'G');
+
+--
+
+SELECT rating,
+	COUNT(film_id) AS count_of_movie,
+	AVG(rental_rate) AS average_rental_rate,
+	MAX(rental_duration) AS maximum_rental_duration,
+	MIN(rental_duration) AS minimum_rental_duration
+FROM film
+WHERE rating IN ('PG', 'G')
+GROUP BY rating;
+   
+   
