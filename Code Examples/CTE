@@ -1,4 +1,4 @@
-Here is a SQL query with a common table expression:
+-- Here is a SQL query with a common table expression:
 
 WITH custumers_country_cte AS
   (SELECT A.customer_id,
