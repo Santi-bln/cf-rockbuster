@@ -1,5 +1,6 @@
 -- Here is a SQL query with a common table expression:
 
+--How many of top 5 customers are in each country
 WITH custumers_country_cte AS
   (SELECT A.customer_id,
           A.first_name,
