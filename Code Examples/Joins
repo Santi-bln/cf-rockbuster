@@ -1,6 +1,6 @@
-The following queries involved joining multiple tables in order to access the information desired.  
-  
-Most popular genres by country:
+-- The following queries involved joining multiple tables in order to access the information desired.  
+
+-- Most popular genres by country:
   
 SELECT SUM(A.amount) AS total_sales,
        J.name,
@@ -17,7 +17,7 @@ INNER JOIN film_category I on H.film_id=I.film_id
 INNER JOIN category J on I.category_id=J.category_id  
 GROUP BY J.name, F.country; 
   
-Customer count & revenue by country:
+-- Customer count & revenue by country:
   
 SELECT D.country,
        COUNT(A.customer_id) AS customer_count, 
