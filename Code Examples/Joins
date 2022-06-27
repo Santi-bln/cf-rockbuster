@@ -1,7 +1,63 @@
 -- The following queries involved joining multiple tables in order to access the information desired.  
 
--- Most popular genres by country:
-  
+-- find the top 10 countries for Rockbuster in terms of customer numbers
+SELECT D.country,
+	COUNT(A.customer_id) AS customer_number
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country D ON C.country_id = D.country_id
+GROUP BY country
+ORDER BY customer_number DESC
+LIMIT 10;
+
+--find the top 10 cities within the top 10 countries identified in the query before
+SELECT C.city,
+	COUNT(A.customer_id) AS customer_number
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C on B.city_id = C.city_id
+INNER JOIN country D ON C.country_id = D.country_id
+WHERE country IN ('India',
+				 'China',
+				 'United States',
+				 'Japan',
+				 'Mexico',
+				 'Brazil',
+				 'Russian Federation',
+				 'Philippines',
+				 'Turkey',
+				 'Indonesia')
+GROUP BY city
+ORDER BY customer_number DESC
+LIMIT 10;
+
+--find the top 5 customers in the top 10 cities who have paid the highest total amounts to Rockbuster
+SELECT A.customer_id,
+	A.first_name,
+	A.last_name,
+	C.city,
+	D.country,
+	SUM(E.amount) AS total_payment
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C on B.city_id = C.city_id
+INNER JOIN country D ON C.country_id = D.country_id
+INNER JOIN payment E ON A.customer_id = E.customer_id
+WHERE city IN ('Aurora',
+			  'Tarsus',
+			  'Atlixco',
+			  'Emeishan',
+			  'Pontianak',
+			  'Shimoga',
+			  'Aparecida de Goinia',
+			  'Zalantun',
+			  'Taguig')
+GROUP BY A.customer_id, C.city, D.country
+ORDER BY total_payment DESC
+LIMIT 5;
+
+-- Most popular genres by country
 SELECT SUM(A.amount) AS total_sales,
        J.name,
        F.country  
@@ -18,7 +74,6 @@ INNER JOIN category J on I.category_id=J.category_id
 GROUP BY J.name, F.country; 
   
 -- Customer count & revenue by country:
-  
 SELECT D.country,
        COUNT(A.customer_id) AS customer_count, 
        SUM(E.amount) AS total_payment  
