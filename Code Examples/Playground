@@ -1,0 +1,90 @@
+ 
+   -- Check all the film categories
+   
+   SELECT * 
+   FROM category;
+   
+   -- Insert new film categories
+   INSERT INTO category
+   (name)
+   VALUES ('Thriller');
+    INSERT INTO category
+   (name)
+   VALUES ('Crime');
+    INSERT INTO category
+   (name)
+   VALUES ('Mystery');
+    INSERT INTO category
+   (name)
+   VALUES ('Romance');
+    INSERT INTO category
+   (name)
+   VALUES ('War');
+   
+     SELECT * 
+   FROM category;
+  
+  -- Update film category of African Egg to Thriller
+  
+   SELECT film_id
+   FROM film
+   WHERE title = 'African Egg'
+   
+   UPDATE film_category
+   SET category_id = '17'
+   WHERE film_id = 5;
+   
+   -- Delete the film category mystery, as there are only few records
+   DELETE FROM category
+   WHERE name = 'Mystery'
+   
+ 	-- Test Explain function
+	EXPLAIN
+	SELECT *
+	FROM film
+	
+	-- select specific columns 
+	SELECT film_id, 
+		title
+	FROM film;
+	
+	-- compare costs
+	EXPLAIN
+	SELECT *
+	FROM film;
+	
+	EXPLAIN
+	SELECT film_id,
+	title
+	FROM film;
+   
+   -- Sort data
+   SELECT title, 
+   release_year,
+   rental_rate
+   FROM film
+   ORDER BY title, release_year, rental_rate DESC;
+   
+   -- Average rental rate for each rating category
+   SELECT 
+   	AVG(rental_rate) AS "Average rental rate",
+   rating AS "Rating"
+   FROM film
+   GROUP BY rating
+   ORDER BY rating;
+   
+   -- min, max and average rental rates for each rating category
+   SELECT rating,
+   	AVG(rental_rate)
+   FROM film
+   GROUP BY rating;
+   
+   SELECT rating AS "Rating Category",
+   	MIN(rental_rate) AS "Minimum Rate"
+   FROM film
+   GROUP BY rating;
+   
+   SELECT rating,
+   	MAX(rental_rate)
+   FROM film
+   GROUP BY rating;
