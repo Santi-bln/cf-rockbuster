@@ -137,3 +137,78 @@ WHERE rating IN ('PG', 'G')
 GROUP BY rating;
    
    
+      --check for duplicates
+   
+   --Shows only those records that duplicate(based on columns selected)
+
+SELECT title,
+       release_year,
+       language_id,
+       rental_duration,
+       COUNT(*)
+FROM film
+GROUP BY title,
+         release_year,
+         language_id,
+         rental_duration
+HAVING COUNT(*) >1; 
+
+SELECT customer_id,
+	store_id,
+	first_name,
+	last_name,
+	email,
+	address_id,
+COUNT (*)
+FROM customer
+GROUP BY customer_id,
+	store_id,
+	first_name,
+	last_name,
+	email,
+	address_id
+HAVING COUNT (*) > 1;
+
+--no duplicates in the database
+
+--Shows only unique records from the film table
+SELECT title,
+       release_year,
+       language_id,
+       rental_duration
+FROM film
+GROUP BY title,
+         release_year,
+         language_id,
+         rental_duration;
+
+		 
+--Returns only unique records from the film table
+SELECT DISTINCT title,
+                release_year,
+                language_id,
+                rental_duration
+FROM film;
+
+--summarizing data
+SELECT MIN(rental_rate) AS min_rent,
+       MAX(rental_rate) AS max_rent,
+       AVG(rental_rate) AS avg_rent,
+       COUNT(rental_rate) AS count_rent_values,
+       COUNT(*) AS count_rows
+FROM film;
+   
+   
+SELECT mode() WITHIN GROUP (ORDER BY rating)
+     AS modal_value
+FROM film;
+
+--creating a view
+CREATE VIEW  film_english_view AS
+SELECT * FROM film
+WHERE language_id = 1 -- English Language code is 1;
+
+CREATE VIEW  film_cantonese_view AS
+SELECT * FROM film
+WHERE language_id = 2 -- Cantonese Language code is 2;
+   
